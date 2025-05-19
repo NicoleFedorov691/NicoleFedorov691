@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Ballet Entertainment</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', Times, serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fdfbf7; /* Soft off-white for elegance */
+        }
+
+        /* Navigation */
+        nav {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 1.5rem;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: #d4af37; /* Gold accent */
+            border-bottom: 2px solid #d4af37;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 20px 40px; /* Add padding-top to account for fixed nav */
+            min-height: 80vh;
+            text-align: center;
+        }
+
+        section:nth-of-type(even) {
+            background-color: #f4f0e8; /* Slightly different shade for contrast */
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 1.5rem;
+            color: #58181F; /* Deep, elegant red */
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: normal;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            border-bottom: 2px solid #d4af37;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            overflow: hidden;
+            padding: 0 20px;
+        }
+
+        /* Homepage Section */
+        #home {
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://via.placeholder.com/1920x1080.png?text=Elegant+Ballet+Performance+Hero') no-repeat center center/cover; /* Replace with your hero image */
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Full viewport height */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        #home h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        #home p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #f4f4f4;
+        }
+
+        .cta-button {
+            background: #d4af37; /* Gold */
+            color: #333;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: #c09d2e; /* Darker gold */
+            transform: translateY(-2px);
+        }
+
+        /* About Section */
+        #about .founder-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+            text-align: left;
+            margin-top: 2rem;
+        }
+
+        #about .founder-info img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 2rem;
+            border: 5px solid #d4af37;
+        }
+
+        #about .founder-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        /* Gallery Section */
+        #gallery .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        #gallery .gallery-item {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #gallery .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        #gallery .gallery-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        #gallery .gallery-item video {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        #gallery .gallery-item p {
+            padding: 1rem;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        /* Contact/Booking Section */
+        #contact {
+            background-color: #58181F; /* Deep Red */
+            color: #fdfbf7;
+        }
+        #contact h2, #contact p {
+            color: #fdfbf7;
+        }
+        #contact h2 {
+            border-bottom-color: #d4af37;
+        }
+
+        #contact form {
+            max-width: 700px;
+            margin: 2rem auto 0;
+            padding: 2rem;
+            background: #fdfbf7;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+
+        #contact form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #58181F;
+            font-weight: bold;
+        }
+
+        #contact form input,
+        #contact form textarea,
+        #contact form select {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+            background-color: #fff;
+            color: #333;
+        }
+
+         #contact form input::placeholder,
+         #contact form textarea::placeholder {
+            color: #999;
+         }
+
+        #contact form button {
+            display: inline-block;
+            width: 100%;
+            padding: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: #333;
+            color: #fff;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            #home h1 {
+                font-size: 2.8rem;
+            }
+            #home p {
+                font-size: 1.2rem;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+            #about .founder-info {
+                flex-direction: column;
+                text-align: center;
+            }
+            #about .founder-info img {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact & Booking</a></li>
+        </ul>
+    </nav>
+
+    <section id="home">
+        <div class="container">
+            <h1>[Your Company Name]</h1>
+            <p>Elite Ballet Entertainment for Unforgettable Events</p>
+            <a href="#contact" class="cta-button">Book Your Performance</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>[Your Company Name] brings the timeless elegance and breathtaking artistry of classical ballet to your most cherished events. We specialize in providing professional, classically trained ballet dancers to create an atmosphere of sophistication and wonder. Whether it's a wedding, a high-end corporate function, a milestone birthday, a chic fashion show, or an intimate cocktail party, our performances are tailored to elevate your occasion, leaving a lasting impression of grace and elite entertainment.</p>
+            <p>Our mission is to seamlessly integrate the beauty of ballet into your event, ensuring each performance is not just a show, but an experience that enhances the ambiance and captivates your guests. We pride ourselves on our commitment to classical form and exceptional professionalism.</p>
+
+            <div class="founder-info">
+                <img src="https://via.placeholder.com/250x250.png?text=Founder+Photo" alt="[Founder's Name]"> <div class="founder-text">
+                    <h3>Meet the Founder: [Founder's Name]</h3>
+                    <p>[Founder's Name] founded [Your Company Name] with a passion for ballet and a vision to make this exquisite art form more accessible for private events. With [Number] years of experience as a professional ballet dancer with [mention notable companies or experiences, if any] and a deep understanding of event dynamics, [He/She/They] ensures that every performance reflects the highest standards of artistry and elegance.</p>
+                    <p>"My goal is to bring a touch of magic and refined beauty to every celebration, creating moments that guests will remember long after the event is over." - [Founder's Name]</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <div class="container">
+            <h2>Gallery</h2>
+            <p>Witness the elegance and artistry our dancers bring to every event. Explore moments from past performances.</p>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/400x300.png?text=Ballet+at+Wedding" alt="Ballet performance at a wedding">
+                    <p>Enchanting performance at a luxury wedding reception.</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/400x300.png?text=Dancers+at+Gala" alt="Dancers at a corporate gala">
+                    <p>Sophisticated ambiance for a corporate fundraiser gala.</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/400x300.png?text=Fashion+Show+Ballet+Video+Still" alt="Ballet at a fashion show - video placeholder">
+                    <p>Dynamic ballet feature for a high-fashion show. (Video)</p>
+                    </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/400x300.png?text=Birthday+Party+Entertainment" alt="Ballet dancers at a birthday party">
+                    <p>Elegant entertainment for a milestone birthday celebration.</p>
+                </div>
+                 <div class="gallery-item">
+                    <img src="https://via.placeholder.com/400x300.png?text=Brit+Mitzvah+Performance" alt="Ballet performance at a Brit Mitzvah">
+                    <p>Graceful performance adding a special touch to a Brit Mitzvah.</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/400x300.png?text=Cocktail+Party+Ballet" alt="Ballet at a cocktail party">
+                    <p>Ambiance setting ballet for an upscale cocktail party.</p>
+                </div>
+                </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Contact & Booking</h2>
+            <p>Ready to add a touch of unparalleled elegance to your event? Contact us today to discuss your vision and book our professional ballet dancers. Please provide as much detail as possible about your event.</p>
+            <form action="https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT" method="POST">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" placeholder="Your Full Name" required>
+
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" placeholder="you@example.com" required>
+
+                <label for="phone">Phone Number (Optional):</label>
+                <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890">
+
+                <label for="event_type">Type of Event:</label>
+                <select id="event_type" name="event_type" required>
+                    <option value="" disabled selected>Select an event type...</option>
+                    <option value="wedding">Wedding</option>
+                    <option value="birthday_party">Birthday Party</option>
+                    <option value="fashion_show">Fashion Show</option>
+                    <option value="brit_mitzvah">Brit/Bat Mitzvah</option>
+                    <option value="cocktail_party">Cocktail Party</option>
+                    <option value="fundraiser">Fundraiser</option>
+                    <option value="corporate_event">Corporate Event</option>
+                    <option value="other">Other (Please specify below)</option>
+                </select>
+
+                <label for="event_date">Date of Event:</label>
+                <input type="date" id="event_date" name="event_date" required>
+
+                <label for="event_location">Location/Venue of Event:</label>
+                <input type="text" id="event_location" name="event_location" placeholder="e.g., The Plaza Hotel, NYC" required>
+
+                <label for="guests">Estimated Number of Guests:</label>
+                <input type="number" id="guests" name="guests" placeholder="e.g., 150">
+
+                <label for="message">Message / Performance Details:</label>
+                <textarea id="message" name="message" rows="6" placeholder="Tell us more about your event, desired performance style (e.g., classical excerpts, pas de deux, ambient performances), number of dancers, duration, etc." required></textarea>
+
+                <button type="submit" class="cta-button">Send Booking Inquiry</button>
+            </form>
+            <p style="margin-top: 2rem; font-size: 1rem;">Alternatively, you can email us directly at <a href="mailto:your.email@example.com" style="color: #d4af37;">your.email@example.com</a> or call us at [Your Phone Number].</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="currentYear"></span> [Your Company Name]. All Rights Reserved.</p>
+            <p>Elite Ballet Entertainment for Exquisite Events.</p>
+            </div>
+    </footer>
+
+    <script>
+        // Smooth Scrolling for Navigation
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+
+                // Active link highlighting
+                document.querySelectorAll('nav a').forEach(navLink => navLink.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Highlight nav link on scroll
+        const sections = document.querySelectorAll('section');
+        const navLi = document.querySelectorAll('nav ul li a');
+
+        window.addEventListener('scroll', ()=> {
+            let current = '';
+            sections.forEach( section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - sectionHeight / 3) ) {
+                    current = section.getAttribute('id');
+                }
+            })
+
+            navLi.forEach( a => {
+                a.classList.remove('active');
+                if (a.getAttribute('href') == `#${current}`) {
+                    a.classList.add('active');
+                }
+            })
+        });
+
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>
